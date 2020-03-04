@@ -1,0 +1,16 @@
+language: java
+sudo: false
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  email:
+    recipients:
+      - rav.energ@rambler.ru
+    on_success: never
+    on_failure: always
+
+env:
+  global:
+    - CODECOV_TOKEN="968cd3b5-8542-46c7-a318-f956b4c52a99"

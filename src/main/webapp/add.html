@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Новое объявление</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="resources/css/css.css">
+    </head>
+
+    <body>
+
+        <div class="container">
+            <h2>Новое объявление о продаже</h2>
+            <p></p><p></p>
+
+            <div class="in_div">
+                <div class="elem_div">
+                    <label for="brand">Марка:</label>
+                    <select class="form-control" id="brand"></select>
+                </div>
+
+                <div class="elem_div">
+                    <label for="model">Модель:</label>
+                    <select class="form-control" id="model"></select>
+                </div>
+
+                <div class="elem_div">
+                    <label for="year">Дата покупки:</label>
+                    <input type="date" name="calendar" id="year">
+                </div>
+
+                <div class="elem_div">
+                    <label for="body">Тип кузова:</label>
+                    <select class="form-control" id="body"></select>
+                </div>
+
+                <div class="elem_div">
+                    <label for="trans">Коробка передач:</label>
+                    <select class="form-control" id="trans"></select>
+                </div>
+
+                <div class="elem_div">
+                    <label for="engine">Тип двигателя:</label>
+                    <select class="form-control" id="engine"></select>
+                </div>
+            </div>
+
+            <div>
+
+                <form method="post" enctype="multipart/form-data" id="upldFrm">
+                    <input type="file" name="inputFile">
+                    <input type="button" class="btn btn-outline-primary add_btn" value="Загрузить" id="btnUpload">
+                    <input type="button" class="btn btn-outline-success add_btn" value="Создать объявление" id="btnCreate">
+                </form>
+
+            </div><br>
+            <div class="in_div left"></div>
+        </div>
+    </body>
+        <footer>
+            <script src="resources/js/car.js"></script>
+            <script>
+                $(document).ready(fillAllElements())
+            </script>
+        </footer>
+</html>

@@ -1,0 +1,11 @@
+﻿{
+  "brands" : ["Kia", "BMW", "Ford", "Volkswagen", "Opel"],
+
+  "models" : ["CEED", "Rio", "X5", "3 серия", "Mondeo", "Focus", "Golf", "Passat", "Astra", "Corsa"],
+
+  "body" : ["Седан", "Хэтчбек", "Универсал"],
+
+  "trans" : ["Механика", "Автомат", "Вариатор"],
+
+  "engine" : ["Бензин", "Дизель", "Газ"]
+}
