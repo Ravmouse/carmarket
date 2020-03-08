@@ -19,4 +19,4 @@ Web-приложение "Объявления о продаже машин".
 * HTML, CSS, JavaScript, jQuery;
 * AJAX.
 
-![Основная страница](https://i.ibb.co/rw6RF7p/main.png)
+![main](https://user-images.githubusercontent.com/29811940/76169938-6373b880-618e-11ea-901a-07601723fd45.png)
