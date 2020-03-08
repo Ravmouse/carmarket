@@ -72,4 +72,31 @@ public class User {
     public String toString() {
         return String.format("name: %s, password: %s", name, password);
     }
+
+    public static Builder newBuilder() {
+        return new User().new Builder();
+    }
+
+    public class Builder {
+        private Builder() { }
+
+        public Builder setId(int id) {
+            User.this.id = id;
+            return this;
+        }
+
+        public Builder setName(String name) {
+            User.this.name = name;
+            return this;
+        }
+
+        public Builder setPassword(String password) {
+            User.this.password = password;
+            return this;
+        }
+
+        public User build() {
+            return User.this;
+        }
+    }
 }

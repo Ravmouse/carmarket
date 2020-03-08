@@ -69,7 +69,6 @@ function getOffers(url, flag, method, dataValue) {
                 if (v.sold) {
                     elem = $('#ch' + k);
                     elem.prop("checked", true);
-                    elem.closest("td").css("background-color", "#f5f5f5");
                 }
                 if (v.user.name !== name) {
                     elem = $('#ch' + k);

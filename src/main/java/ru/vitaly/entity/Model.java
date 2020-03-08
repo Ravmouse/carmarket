@@ -46,4 +46,26 @@ public class Model {
     public String toString() {
         return String.format("%s", name);
     }
+
+    public static Builder newBuilder() {
+        return new Model().new Builder();
+    }
+
+    public class Builder {
+        private Builder() { }
+
+        public Builder setId(int id) {
+            Model.this.id = id;
+            return this;
+        }
+
+        public Builder setName(String name) {
+            Model.this.name = name;
+            return this;
+        }
+
+        public Model build() {
+            return Model.this;
+        }
+    }
 }

@@ -46,4 +46,26 @@ public class Transmission {
     public String toString() {
         return String.format("%s", name);
     }
+
+    public static Builder newBuilder() {
+        return new Transmission().new Builder();
+    }
+
+    public class Builder {
+        private Builder() { }
+
+        public Builder setId(int id) {
+            Transmission.this.id = id;
+            return this;
+        }
+
+        public Builder setName(String name) {
+            Transmission.this.name = name;
+            return this;
+        }
+
+        public Transmission build() {
+            return Transmission.this;
+        }
+    }
 }

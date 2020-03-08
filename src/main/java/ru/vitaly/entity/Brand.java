@@ -63,4 +63,26 @@ public class Brand {
     public int hashCode() {
         return 37;
     }
+
+    public static Builder newBuilder() {
+        return new Brand().new Builder();
+    }
+
+    public class Builder {
+        private Builder() { }
+
+        public Builder setId(int id) {
+            Brand.this.id = id;
+            return this;
+        }
+
+        public Builder setName(String name) {
+            Brand.this.name = name;
+            return this;
+        }
+
+        public Brand build() {
+            return Brand.this;
+        }
+    }
 }

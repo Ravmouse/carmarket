@@ -46,4 +46,26 @@ public class Engine {
     public String toString() {
         return String.format("%s", name);
     }
+
+    public static Builder newBuilder() {
+        return new Engine().new Builder();
+    }
+
+    public class Builder {
+        private Builder() { }
+
+        public Builder setId(int id) {
+            Engine.this.id = id;
+            return this;
+        }
+
+        public Builder setName(String name) {
+            Engine.this.name = name;
+            return this;
+        }
+
+        public Engine build() {
+            return Engine.this;
+        }
+    }
 }

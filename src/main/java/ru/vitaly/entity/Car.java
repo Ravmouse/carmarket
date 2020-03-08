@@ -130,4 +130,51 @@ public class Car {
         return String.format("year: %s, brand: {%s}, model: %s, transmission: %s, body: %s, engine: %s", year, brand, model,
                 transmission, carBody, engine);
     }
+
+    public static Builder newBuilder() {
+        return new Car().new Builder();
+    }
+
+    public class Builder {
+        private Builder() { }
+
+        public Builder setId(int id) {
+            Car.this.id = id;
+            return this;
+        }
+
+        public Builder setYear(LocalDate year) {
+            Car.this.year = year;
+            return this;
+        }
+
+        public Builder setBrand(Brand brand) {
+            Car.this.brand = brand;
+            return this;
+        }
+
+        public Builder setModel(Model model) {
+            Car.this.model = model;
+            return this;
+        }
+
+        public Builder setTransmission(Transmission transmission) {
+            Car.this.transmission = transmission;
+            return this;
+        }
+
+        public Builder setCarbody(CarBody carBody) {
+            Car.this.carBody = carBody;
+            return this;
+        }
+
+        public Builder setEngine(Engine engine) {
+            Car.this.engine = engine;
+            return this;
+        }
+
+        public Car build() {
+            return Car.this;
+        }
+    }
 }

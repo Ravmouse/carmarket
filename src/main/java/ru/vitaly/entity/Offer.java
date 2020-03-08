@@ -1,9 +1,8 @@
 package ru.vitaly.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sun.istack.NotNull;
+import org.hibernate.annotations.Cascade;
 import ru.vitaly.utils.YearMonthDaySerializer;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.time.LocalDate;
+import static org.hibernate.annotations.CascadeType.SAVE_UPDATE;
 
 /**
  * @author Vitaly Vasilyev, date: 27.02.2020, e-mail: rav.energ@rambler.ru
@@ -24,7 +24,8 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+    @Cascade(SAVE_UPDATE)
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;
 
@@ -32,8 +33,7 @@ public class Offer {
     private String imgName;
 
     @ManyToOne
-    @JoinColumn(name = "offeruser_id")
-    @NotNull
+    @JoinColumn(name = "offeruser_id", nullable = false)
     private User user;
 
     @JsonSerialize(using = YearMonthDaySerializer.class)
@@ -117,5 +117,42 @@ public class Offer {
     @Override
     public String toString() {
         return String.format("Offer: car: {%s}, image: %s, sold: %b, user: {%s}, createDate: %s", car, imgName, sold, user, createDate);
+    }
+
+    public static Builder newBuilder() {
+        return new Offer().new Builder();
+    }
+
+    public class Builder {
+        private Builder() { }
+
+        public Builder setId(int id) {
+            Offer.this.id = id;
+            return this;
+        }
+
+        public Builder setCar(Car car) {
+            Offer.this.car = car;
+            return this;
+        }
+
+        public Builder setImgName(String imgName) {
+            Offer.this.imgName = imgName;
+            return this;
+        }
+
+        public Builder setUser(User user) {
+            Offer.this.user = user;
+            return this;
+        }
+
+        public Builder setCreateDate(LocalDate createDate) {
+            Offer.this.createDate = createDate;
+            return this;
+        }
+
+        public Offer build() {
+            return Offer.this;
+        }
     }
 }

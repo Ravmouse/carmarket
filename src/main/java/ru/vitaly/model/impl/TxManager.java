@@ -2,8 +2,8 @@ package ru.vitaly.model.impl;
 
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import ru.vitaly.service.HibernateFactory;
 import ru.vitaly.service.Wrapper;
 import ru.vitaly.entity.Brand;
 import ru.vitaly.entity.Offer;
@@ -26,7 +26,7 @@ public class TxManager implements TransactionManager<Offer> {
     /**
      * Фабрика сессий.
      */
-    public final SessionFactory factory;
+    public final SessionFactory factory = new Configuration().configure().buildSessionFactory();
     /**
      * Логгер.
      */
@@ -35,16 +35,7 @@ public class TxManager implements TransactionManager<Offer> {
     /**
      * Приватный конструктор.
      */
-    private TxManager() {
-        factory = HibernateFactory.getFactory("hibernate.cfg.xml");
-    }
-
-    /**
-     * @param name название конфигурационного файла для ТЕСТОВ.
-     */
-    public TxManager(String name) {
-        factory = HibernateFactory.getFactory(name);
-    }
+    private TxManager() { }
 
     /**
      * @return экз. этого класса.
@@ -59,26 +50,9 @@ public class TxManager implements TransactionManager<Offer> {
      */
     @Override
     public Offer addOffer(Offer offer) {
-        return add(offer);
-    }
-
-    protected User addUser(User user) {
-        return add(user);
-    }
-
-    protected Brand addBrand(Brand brand) {
-        return add(brand);
-    }
-
-    /**
-     * @param t экз.класса.
-     * @param <T> обобщенный параметр.
-     * @return экз.класса, но уже персистентный.
-     */
-    private <T> T add(T t) {
         return new Wrapper(factory).perform(session -> {
-            session.save(t);
-            return t;
+            session.save(offer);
+            return offer;
         });
     }
 
